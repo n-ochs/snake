@@ -7,22 +7,26 @@
       </button>
     </div>
 
-    <div v-else class="flex items-center justify-center h-screen">
-      <div class="grid grid-cols-15 gap-1 mt-4">
-        <div v-for="(_, rowIndex) in gridSize" :key="rowIndex" class="flex">
-          <div
-            v-for="(_, colIndex) in gridSize"
-            :key="colIndex"
-            class="w-8 h-8 border border-gray-300 flex items-center justify-center"
-          >
+    <div v-else>
+      <h1 class="text-3xl text-center">🐍 Snake 🐍</h1>
+      <p class="text-center">Move with W A S D</p>
+      <div class="flex items-center justify-center h-full">
+        <div class="grid grid-cols-15 gap-1 mt-4">
+          <div v-for="(_, rowIndex) in gridSize" :key="rowIndex" class="flex">
             <div
-              v-if="snake.some((segment) => segment.x === colIndex && segment.y === rowIndex)"
-              class="w-6 h-6 bg-green-500 rounded-full"
-            ></div>
-            <div
-              v-else-if="food.x === colIndex && food.y === rowIndex"
-              class="w-6 h-6 bg-red-500 rounded-full"
-            ></div>
+              v-for="(_, colIndex) in gridSize"
+              :key="colIndex"
+              class="w-8 h-8 border border-gray-300 flex items-center justify-center"
+            >
+              <div
+                v-if="snake.some((segment) => segment.x === colIndex && segment.y === rowIndex)"
+                class="w-6 h-6 bg-green-500 rounded-full"
+              ></div>
+              <div
+                v-else-if="food.x === colIndex && food.y === rowIndex"
+                class="w-6 h-6 bg-red-500 rounded-full"
+              ></div>
+            </div>
           </div>
         </div>
       </div>
